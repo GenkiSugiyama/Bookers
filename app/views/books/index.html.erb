@@ -1,0 +1,40 @@
+<% if flash[:notice] %>
+  <p class="create-success"><%= flash[:notice] %></p>
+<% end %>
+<h1>Books</h1>
+<!-- 一覧画面部分 -->
+<div class="index">
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Body</th>
+			<th></th>
+		</tr>
+		<% @books.each do |book| %>
+		<tr>
+			<td><%= book.title %></td>
+			<td><%= book.body %></td>
+			<td>
+				<%= link_to "Show", book_path(book.id), class:"show_book.id", method: :get  %> 
+				<%= link_to "Edit", edit_book_path(book.id), class:"edit_book.id" %> 
+				<%= link_to "Destroy", book_path(book.id), class:"destroy_book.id", method: :delete, data: { confirm: 'Are you sure?'} %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>
+
+
+<!-- 投稿部分 -->
+<div class="newbook">
+<h2>New book</h2>
+<%= form_for(@book) do |f| %>
+<p class="newheadline">Title</p>
+<%= f.text_field :title, class:"book_title" %>
+<p class="newheadline">Body</p>
+<%= f.text_area :body, class:"book_body" %>
+<div>
+	<%= f.submit "Create Book" %>
+</div>
+<% end %>
+</div>
