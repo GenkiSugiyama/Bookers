@@ -9,4 +9,4 @@
 </div>
 <% end %>
 
-<%= link_to "Show", books_path(@book.id), class:"show_@book.id", method: :get %> <span>|</span> <%= link_to "Back", books_path, class:"back", method: :get %>
+<%= link_to "Show", books_path(@book.id), class:"show_#{@book.id}", method: :get %> <span>|</span> <%= link_to "Back", books_path, class:"back", method: :get %>
